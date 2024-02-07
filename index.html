@@ -3,31 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+    <link rel="manifest" href="assets/site.webmanifest" />
+
     <link rel="stylesheet" href="styles.css" />
     <title>Best Bank</title>
   </head>
   <body>
     <header>
-      <img src="/assets/bestbank_logo.png" alt="" />
-      <menu>
-        <li>Home</li>
-        <li>Payments</li>
-        <li>Savings</li>
-        <li>Financing</li>
-        <li>Stocks</li>
-      </menu>
+      <img class="logo" src="/assets/bestbank_logo.png" alt="Best bank logo in black & white" />
+      <nav>
+        <ul>
+          <li><a href="" class="selected">Home</a></li>
+          <li><a href="">Payments</a></li>
+          <li><a href="">Savings</a></li>
+          <li><a href="">Financing</a></li>
+          <li><a href="">Stocks</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
       <section class="operations-container">
         <button>Pay</button>
         <button>Transfer</button>
       </section>
-      <section class="accounts-container">
-        <h2>Accounts</h2>
-        <div>Main Account<span>$ 6,700.56</span></div>
-        <div>Expenses<span>$ 5,134.63</span></div>
-        <div>Savings<span>$ 36,500.12</span></div>
-      </section>
+      <div class="accounts-dashboard">
+        <section class="accounts-container">
+          <h1>Accounts</h1>
+          <div class="account">Main Account<span>$ 6,700.56</span></div>
+          <div class="account">Expenses<span>$ 5,134.63</span></div>
+          <div class="account">Savings<span>$ 36,500.12</span></div>
+        </section>
+        <section class="accounts-container">
+          <h2>Spending</h2>
+          <div class="spendings">Rent<span>$ 1,450</span></div>
+          <div class="spendings">Groceries<span>$ 564</span></div>
+          <div class="spendings">Restaurants<span>$ 123</span></div>
+          <div class="spendings">Transport<span>$ 81</span></div>
+          <div class="spendings">Internet<span>$ 50</span></div>
+        </section>
+      </div>
     </main>
     <script src="scripts.js"></script>
   </body>
