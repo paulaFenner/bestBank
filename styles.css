@@ -1,32 +1,66 @@
+*,
+a::before,
+a::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --accent: #ffd18c;
+  --accent-dark: #ffa724;
+  --accent-light: #fdf7f4;
+}
+
 html,
 body {
   margin: 0;
-  padding: 0;
-  color: #000;
-  font-size: 25px;
   font-family: 'Inter', sans-serif;
+  font-size: 16px;
   text-align: center;
+}
+
+/* =================
+  Typography 
+ ================= */
+
+h1,
+h2,
+p {
+  margin: 0;
 }
 
 h1,
 h2 {
-  margin: 0;
+  font-size: 1.5rem; /* Large heading */
 }
 
+.account p {
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 1rem; /* Regular paragraph text */
+}
+
+/* =================
+  Header
+ ================= */
+
 .logo {
-  max-height: 73px;
-  margin: 30px auto;
+  max-width: 250px; /* adjust here for mobile */
+  margin: 2em auto;
 }
 
 header {
-  position: relative;
+  text-align: center;
 }
 
 ul {
   margin: 0;
-  padding: 20px;
+  padding: 1.25em;
   list-style: none;
-  background-color: #ffd18c;
+  background-color: var(--accent);
 }
 
 li {
@@ -34,9 +68,9 @@ li {
 }
 
 li a {
-  color: #000;
+  color: var(--black);
   text-align: center;
-  padding: 0px 20px;
+  padding: 0 1.25em;
   text-decoration: none;
 }
 
@@ -48,110 +82,109 @@ a:hover {
   text-decoration: underline;
 }
 
+/* =================
+  Buttons
+ ================= */
+
+button {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.5em 1em;
+  background-color: var(--white);
+  border-radius: 30px;
+  border: 3px solid var(--accent-dark);
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--white);
+  background-color: var(--accent-dark);
+}
+
+/* =================
+  Layout
+ ================= */
+
 main {
-  background-color: #fdf7f4;
-  padding: 30px;
+  background-color: var(--accent-light);
 }
 
-.accounts-dashboard {
-  margin: 40px auto 50px auto;
-  max-width: 1024px; /* prevents excessive stretching */
-  padding: 0 30px;
-  display: grid;
-  grid-gap: 38px;
-
-  /* Adjust grid columns to be flexible */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.container {
+  width: 80%;
+  padding: 2em;
+  margin: 0 auto;
 }
 
-.accounts-container {
+.btn {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto 0.5em auto;
+  display: block;
+}
+
+.accounts {
+  margin: 0 0 1.5em 0;
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.7em;
 }
 
 .account,
 .spendings {
   font-weight: 700;
   border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
   cursor: pointer;
+  display: flex; /* organize account name and amount */
+  justify-content: space-between;
 }
 
 .account {
-  padding: 30px 20px;
+  padding: 1.25em;
   background-color: #fff;
-  border: 5px solid #ffa724;
+  border: 3px solid var(--accent-dark);
+}
+
+.account:hover,
+.account:focus {
+  background-color: var(--accent);
 }
 
 .spendings {
-  padding: 10px;
-  font-size: 20px;
-  background-color: #ffd18c;
+  padding: 0.7em;
+  /* font-size: 1.25rem; */
+  background-color: var(--accent);
 }
 
-/* BUTTONS */
-button {
-  width: 240px;
-  font-size: 30px;
-  font-weight: 700;
-  margin: 0 5px;
-  padding: 10px 20px;
-  background-color: #fff;
-  border-radius: 30px;
-  border: 5px solid #ffa724;
-  cursor: pointer;
-}
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
 
-button:hover {
-  color: #fff;
-  background-color: #dc5735;
-}
+  h1,
+  h2 {
+    font-size: 2rem; /* Increase heading size for larger screens */
+  }
 
-/* TOGGLE SWITCH */
-.toggle-switch {
-  position: absolute;
-  top: 25px;
-  right: 10%;
-  display: inline-block;
-  width: 60px;
-  height: 30px;
-}
+  .account p {
+    font-size: 1.4rem;
+  }
 
-.toggle-switch input {
-  display: none;
-}
+  p {
+    font-size: 1.1rem; /* Increase paragraph text size for larger screens */
+  }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ffd18c;
-  border-radius: 20px;
-  transition: 0.4s;
-}
+  .dashboard {
+    max-width: 1280px; /* prevents excessive stretching */
+    display: grid;
+    grid-gap: 38px;
 
-.slider:before {
-  position: absolute;
-  content: '';
-  height: 26px;
-  width: 26px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.4s;
-}
+    /* Adjust grid columns to be flexible */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 
-input:checked + .slider {
-  background-color: #dc5735;
-}
-
-input:checked + .slider:before {
-  transform: translateX(30px);
+  .btn {
+    margin: 0 0.5em 0 0;
+    display: inline-block;
+  }
 }
