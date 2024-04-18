@@ -16,7 +16,7 @@ html,
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  /* font-size: 16px; */
   text-align: center;
 }
 
@@ -36,11 +36,11 @@ h2 {
 }
 
 .account p {
-  font-size: 1.2rem;
+  font-size: 1.125rem;
 }
 
 p {
-  font-size: 1rem; /* Regular paragraph text */
+  font-size: 0.875rem; /* Regular paragraph text */
 }
 
 /* =================
@@ -49,7 +49,7 @@ p {
 
 .logo {
   max-width: 250px; /* adjust here for mobile */
-  margin: 2em auto;
+  margin: 1em auto;
 }
 
 header {
@@ -58,7 +58,7 @@ header {
 
 ul {
   margin: 0;
-  padding: 1.25em;
+  padding: 1em;
   list-style: none;
   background-color: var(--accent);
 }
@@ -69,6 +69,7 @@ li {
 
 li a {
   color: var(--black);
+  font-size: 1rem;
   text-align: center;
   padding: 0 1.25em;
   text-decoration: none;
@@ -87,9 +88,10 @@ a:hover {
  ================= */
 
 button {
-  font-size: 1.25rem;
+  font-family: inherit;
+  font-size: 1.125rem;
   font-weight: 700;
-  padding: 0.5em 1em;
+  padding: 0.7em;
   background-color: var(--white);
   border-radius: 30px;
   border: 3px solid var(--accent-dark);
@@ -111,13 +113,13 @@ main {
 
 .container {
   width: 80%;
-  padding: 2em;
+  padding: 1.5em;
   margin: 0 auto;
 }
 
 .btn {
   width: 100%;
-  max-width: 250px;
+  max-width: 180px;
   margin: 0 auto 0.5em auto;
   display: block;
 }
@@ -127,13 +129,13 @@ main {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 0.7em;
+  gap: 0.5em;
 }
 
 .account,
-.spendings {
+.spending {
   font-weight: 700;
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
   display: flex; /* organize account name and amount */
   justify-content: space-between;
@@ -150,30 +152,12 @@ main {
   background-color: var(--accent);
 }
 
-.spendings {
-  padding: 0.7em;
-  /* font-size: 1.25rem; */
+.spending {
+  padding: 0.5em 0.8em;
   background-color: var(--accent);
 }
 
 @media (min-width: 768px) {
-  body {
-    font-size: 18px;
-  }
-
-  h1,
-  h2 {
-    font-size: 2rem; /* Increase heading size for larger screens */
-  }
-
-  .account p {
-    font-size: 1.4rem;
-  }
-
-  p {
-    font-size: 1.1rem; /* Increase paragraph text size for larger screens */
-  }
-
   .dashboard {
     max-width: 1280px; /* prevents excessive stretching */
     display: grid;
