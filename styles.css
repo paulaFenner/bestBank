@@ -112,7 +112,7 @@ main {
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   padding: 1.5em;
   margin: 0 auto;
 }
@@ -158,6 +158,9 @@ main {
 }
 
 @media (min-width: 768px) {
+  .container {
+    width: 80%;
+  }
   .dashboard {
     max-width: 1280px; /* prevents excessive stretching */
     display: grid;
