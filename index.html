@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Best Bank</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- FONTS -->
@@ -18,7 +19,6 @@
     <link rel="manifest" href="assets/site.webmanifest" />
 
     <link rel="stylesheet" href="styles.css" />
-    <title>Best Bank</title>
   </head>
   <body>
     <header>
@@ -38,52 +38,31 @@
         </div>
       </div>
     </header>
+
     <main>
       <section class="container operations">
-        <button class="btn">Pay</button>
-        <button class="btn">Transfer</button>
+        <button id="pay-btn" class="btn">Pay</button>
+        <button id="transfer-btn" class="btn">Transfer</button>
       </section>
       <div class="container dashboard">
         <section class="accounts">
           <h1>Accounts</h1>
-          <div class="account">
-            <p>Main Account</p>
-            <p>$ 6,700.56</p>
-          </div>
-          <div class="account">
-            <p>Expenses</p>
-            <p>$ 5,134.63</p>
-          </div>
-          <div class="account">
-            <p>Savings</p>
-            <p>$ 36,500.12</p>
+          <div class="accounts" id="accounts-container">
+            <!-- Accounts here!! -->
           </div>
         </section>
         <section class="accounts">
-          <h2>Spending</h2>
-          <div class="spending">
-            <p>Rent</p>
-            <p>$ 1,450</p>
-          </div>
-          <div class="spending">
-            <p>Groceries</p>
-            <p>$ 564</p>
-          </div>
-          <div class="spending">
-            <p>Restaurants</p>
-            <p>$ 123</p>
-          </div>
-          <div class="spending">
-            <p>Transport</p>
-            <p>$ 81</p>
-          </div>
-          <div class="spending">
-            <p>Internet</p>
-            <p>$ 50</p>
+          <h2>Spendings</h2>
+          <div class="accounts" id="spendings-container">
+            <!-- Spendings here!! -->
           </div>
         </section>
       </div>
     </main>
+
+    <footer>
+      <p>© BestBank, 2024</p>
+    </footer>
     <script src="index.js" type="module"></script>
   </body>
 </html>

@@ -1,15 +1,20 @@
 *,
-a::before,
-a::after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 :root {
   --black: #000000;
   --white: #ffffff;
+  --accent: #e8f3ef;
+  --accent-dark: #36a18b;
+  --accent-light: #f5f5f5;
+
+  /* Orange pallete
   --accent: #ffd18c;
   --accent-dark: #ffa724;
-  --accent-light: #fdf7f4;
+  --accent-light: #fdf7f4; */
 }
 
 html,
@@ -51,6 +56,7 @@ button {
   font-size: 1.125rem;
   font-weight: 700;
   padding: 0.7em;
+  color: var(--accent-dark);
   background-color: var(--white);
   border-radius: 30px;
   border: 3px solid var(--accent-dark);
@@ -94,6 +100,7 @@ button:hover {
 
 main {
   background-color: var(--accent-light);
+  height: 100vh;
 }
 
 .container {
@@ -142,10 +149,12 @@ main {
   background-color: var(--accent);
 }
 
+/* =================
+  Breakpoints
+ ================= */
+
 @media (min-width: 768px) {
-  /* =================
-  Header
-  ================= */
+  /* Header */
   .hamburger {
     display: none;
   }
@@ -165,7 +174,7 @@ main {
   }
 
   li a {
-    color: var(--black);
+    color: var(--accent-dark);
     font-size: 1rem;
     text-align: center;
     padding: 0 1.25em;
@@ -180,9 +189,7 @@ main {
     text-decoration: underline;
   }
 
-  /* =================
-  Layout
-  ================= */
+  /*Layout*/
   .container {
     width: 80%;
   }
