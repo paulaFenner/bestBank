@@ -100,7 +100,7 @@ button:hover {
 
 main {
   background-color: var(--accent-light);
-  height: 80vh;
+  /* height: 80vh; */
 }
 
 .container {
