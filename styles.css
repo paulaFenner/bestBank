@@ -11,7 +11,7 @@
   --accent-dark: #36a18b;
   --accent-light: #f5f5f5;
 
-  /* Orange pallete
+  /* Orange palette
   --accent: #ffd18c;
   --accent-dark: #ffa724;
   --accent-light: #fdf7f4; */
@@ -100,7 +100,7 @@ button:hover {
 
 main {
   background-color: var(--accent-light);
-  height: 100vh;
+  height: 80vh;
 }
 
 .container {
@@ -147,6 +147,17 @@ main {
 .spending {
   padding: 0.5em 0.8em;
   background-color: var(--accent);
+}
+
+footer {
+  height: 20vh;
+  width: 100%;
+  padding: 30px;
+  color: var(--white);
+  background-color: var(--accent-dark);
+  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
 }
 
 /* =================

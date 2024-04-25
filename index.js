@@ -3,70 +3,66 @@ import { accounts } from './data.js';
 const accountsContainerEl = document.getElementById('accounts-container');
 const spendingsContainerEl = document.getElementById('spendings-container');
 
-accountsContainerEl.addEventListener('click', function (e) {
-  let selectedAccountId;
+accountsContainerEl.addEventListener('click', handleAccountClick);
 
-  if (e.target.classList.contains('account')) {
-    selectedAccountId = e.target.id;
-  } else if (e.target.nodeName === 'P') {
-    selectedAccountId = e.target.parentElement.id;
-  }
+function renderAccounts() {
+  accountsContainerEl.innerHTML = accounts.map(getAccountHtml).join('');
+}
 
-  const selectedAccount = accounts.find((account) => account.id === parseInt(selectedAccountId));
+function handleAccountClick(e) {
+  const selectedAccountId = e.target.closest('.account')?.id;
+  const selectedAccount = findAccountById(selectedAccountId);
   showSpendings(selectedAccount);
-});
+}
 
-function getAccountsHtml() {
-  let accountsHtml = '';
+function findAccountById(id) {
+  return accounts.find((account) => account.id === parseInt(id));
+}
 
-  accounts.forEach((account) => {
-    accountsHtml += `
+function getAccountHtml(account) {
+  return `
     <div class="account" id=${account.id}>
       <p>${account.title}</p>
       <p>$ ${account.balance}</p>
-  </div>   
-    `;
-  });
-  return accountsHtml;
+    </div>
+  `;
 }
 
 function showSpendings(selectedAccount) {
-  spendingsContainerEl.innerHTML = '';
-
-  if (selectedAccount) {
-    const accountId = selectedAccount.id;
-    const account = accounts.find((acc) => acc.id === accountId);
-    if (account) {
-      if (account.spendings.length > 0) {
-        populateSpendings(account);
-      } else {
-        spendingsContainerEl.innerHTML = `<p class="no-spendings">No spendings for this account</p>`;
-      }
-    } else {
-      spendingsContainerEl.innerHTML = `<p class="no-spendings">Account not found</p>`;
-    }
-  } else {
-    spendingsContainerEl.innerHTML = `<p class="no-spendings">No account selected</p>`;
+  if (!selectedAccount) {
+    clearSelection();
+    return;
   }
+
+  const { spendings } = selectedAccount;
+  if (!spendings.length) {
+    spendingsContainerEl.innerHTML = `<p class="no-spendings">No spendings for this account 💰💰💰</p>`;
+    return;
+  }
+
+  spendingsContainerEl.innerHTML = spendings.map(getSpendingHtml).join('');
 }
 
-function populateSpendings(selectedAccount) {
-  let spendingsHtml = '';
-
-  selectedAccount.spendings.forEach((spending) => {
-    spendingsHtml += `
-      <div class="spending">
-        <p>${spending.category}</p>
-        <p>$ ${spending.spent}</p>
-      </div>
-    `;
-  });
-
-  spendingsContainerEl.innerHTML = spendingsHtml;
+function getSpendingHtml(spending) {
+  return `
+    <div class="spending">
+      <p>${spending.category}</p>
+      <p>$ ${spending.spent}</p>
+    </div>
+  `;
 }
 
-function render() {
-  accountsContainerEl.innerHTML = getAccountsHtml();
+function clearSelection() {
+  spendingsContainerEl.innerHTML = `<p class="no-spendings">No account selected</p>`;
 }
 
-render();
+function addCopyright() {
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+  const footer = document.getElementById('footer');
+
+  footer.innerHTML = `<p>&copy; ${currentYear} BestBank. All rights reserved.</p>`;
+}
+
+renderAccounts();
+addCopyright();
