@@ -150,7 +150,7 @@ main {
 }
 
 footer {
-  height: 20vh;
+  /* height: 20vh; */
   width: 100%;
   padding: 30px;
   color: var(--white);
