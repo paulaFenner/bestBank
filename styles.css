@@ -89,7 +89,7 @@ button:hover {
   text-align: left;
   background-color: var(--accent); /* Added for clarity */
   left: 0; /* Aligns the menu to the left edge */
-  top: 13.5%; /* Positions the menu below the hamburger icon */
+  top: 15%; /* Positions the menu below the hamburger icon */
 }
 
 ul {
@@ -122,6 +122,7 @@ a:hover {
 .hamburger {
   background-color: var(--accent);
   text-align: left;
+  position: relative;
 }
 
 .fa {

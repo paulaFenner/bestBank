@@ -1,20 +1,47 @@
 import { accounts } from './data.js';
 
+// ELEMENT REFERENCES -----------------------------------------------------------
 const accountsContainerEl = document.getElementById('accounts-container');
 const spendingsContainerEl = document.getElementById('spendings-container');
 const sideMenuEl = document.getElementById('side-menu');
 const hamburgerMenuEl = document.getElementById('hamburger-menu');
+const footerEl = document.getElementById('footer');
 
+// EVENTS -----------------------------------------------------------------------
 accountsContainerEl.addEventListener('click', handleAccountClick);
 hamburgerMenuEl.addEventListener('click', toggleMenu);
 
+// FUNCTION CALLS ------------------------------------------------------------------
+addCopyright();
+renderAccounts();
+
+// FUNCTIONS --------------------------------------------------------------------
+// MENU AND FOOTER
 function toggleMenu(e) {
   e.preventDefault(); // Prevent the default behavior of the <a> tag
   sideMenuEl.classList.toggle('show-menu');
 }
 
+function addCopyright() {
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+
+  footerEl.innerHTML = `<p>&copy; ${currentYear} BestBank. All rights reserved.</p>`;
+}
+
+// ACCOUNTS CONTAINER
+// Generate HTML for accounts
+function getAccountsHtml(account) {
+  return `
+    <div class="account" id=${account.id}>
+      <p>${account.title}</p>
+      <p>$ ${account.balance}</p>
+    </div>
+  `;
+}
+
 function renderAccounts() {
-  accountsContainerEl.innerHTML = accounts.map(getAccountHtml).join('');
+  accountsContainerEl.innerHTML = accounts.map(getAccountsHtml).join('');
 }
 
 function handleAccountClick(e) {
@@ -28,35 +55,9 @@ function findAccountById(id) {
   return accounts.find((account) => account.id === parseInt(id));
 }
 
-function getAccountHtml(account) {
-  return `
-    <div class="account" id=${account.id}>
-      <p>${account.title}</p>
-      <p>$ ${account.balance}</p>
-    </div>
-  `;
-}
-
-// Show spendings for the selected account
-function showSpendings(selectedAccount) {
-  if (!selectedAccount) {
-    noSelection();
-    return;
-  }
-
-  // If the selected account has no spendings, display a message
-  const { spendings } = selectedAccount;
-  if (!spendings.length) {
-    spendingsContainerEl.innerHTML = `<p class="no-spendings">No spendings for this account 💰💰💰</p>`;
-    return;
-  }
-
-  // Generate HTML for each spending and join them together
-  spendingsContainerEl.innerHTML = spendings.map(getSpendingHtml).join('');
-}
-
-// Generate HTML for a spending
-function getSpendingHtml(spending) {
+// SPENDINGS CONTAINER
+// Generate HTML for spendings
+function getSpendingsHtml(spending) {
   return `
     <div class="spending">
       <p>${spending.category}</p>
@@ -65,18 +66,27 @@ function getSpendingHtml(spending) {
   `;
 }
 
-function noSelection() {
-  spendingsContainerEl.innerHTML = `<p class="no-spendings">No account selected</p>`;
+function showSpendings(selectedAccount) {
+  const spendingsHtml = [];
+
+  // if  selectedAccount exists
+  if (selectedAccount) {
+    // Check if the selected account has spendings
+    if (selectedAccount.spendings && selectedAccount.spendings.length > 0) {
+      // Generate HTML for each spending and push it to the spendingsHtml array
+      selectedAccount.spendings.forEach((spending) => {
+        spendingsHtml.push(getSpendingsHtml(spending));
+      });
+    } else {
+      // If the selected account has no spendings, push a message to the spendingsHtml array
+      spendingsHtml.push(`<p class="no-spendings">No spendings for this account</p>`);
+    }
+
+    // If no account is selected, push a message to the spendingsHtml array
+  } else {
+    spendingsHtml.push(`<p class="no-spendings">No account selected</p>`);
+  }
+
+  // Join the HTML strings in the spendingsHtml array and set the innerHTML of spendingsContainerEl
+  spendingsContainerEl.innerHTML = spendingsHtml.join('');
 }
-
-function addCopyright() {
-  // Get the current year
-  const currentYear = new Date().getFullYear();
-  const footer = document.getElementById('footer');
-
-  footer.innerHTML = `<p>&copy; ${currentYear} BestBank. All rights reserved.</p>`;
-}
-
-// Render the accounts and add copyright information
-renderAccounts();
-addCopyright();
