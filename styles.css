@@ -21,6 +21,7 @@ html,
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -36,15 +37,15 @@ p {
 
 h1,
 h2 {
-  font-size: 1.5rem; /* Large heading */
+  font-size: 1.5em; /* Large heading */
 }
 
 .account p {
-  font-size: 1.125rem;
+  font-size: 1.125em;
 }
 
 p {
-  font-size: 0.875rem; /* Regular paragraph text */
+  font-size: 0.875em; /* Regular paragraph text */
 }
 
 /* =================
@@ -53,7 +54,7 @@ p {
 
 button {
   font-family: inherit;
-  font-size: 1.125rem;
+  font-size: 1.125em;
   font-weight: 700;
   padding: 0.7em;
   color: var(--accent-dark);
@@ -81,9 +82,46 @@ button:hover {
   display: none;
 }
 
+.show-menu {
+  display: block;
+  position: absolute;
+  padding: 2em;
+  text-align: left;
+  background-color: var(--accent); /* Added for clarity */
+  left: 0; /* Aligns the menu to the left edge */
+  top: 13.5%; /* Positions the menu below the hamburger icon */
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: var(--accent);
+}
+
+li {
+  display: block;
+}
+
+li a {
+  color: var(--accent-dark);
+  font-size: 1em;
+  padding: 1em;
+  display: block;
+  text-decoration: none;
+}
+
+li a.selected {
+  font-weight: 700;
+}
+
+a:hover {
+  text-decoration: 3px underline;
+}
+
 .hamburger {
   background-color: var(--accent);
-  text-align: start;
+  text-align: left;
 }
 
 .fa {
@@ -157,7 +195,7 @@ footer {
   background-color: var(--accent-dark);
   text-align: center;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 /* =================
@@ -165,39 +203,26 @@ footer {
  ================= */
 
 @media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
   /* Header */
   .hamburger {
     display: none;
   }
   .menu {
     display: inline;
+    position: static;
   }
 
   ul {
-    margin: 0;
-    padding: 1em;
-    list-style: none;
-    background-color: var(--accent);
+    text-align: center;
   }
 
   li {
-    display: inline;
-  }
-
-  li a {
-    color: var(--accent-dark);
-    font-size: 1rem;
-    text-align: center;
-    padding: 0 1.25em;
-    text-decoration: none;
-  }
-
-  li a.selected {
-    font-weight: 700;
-  }
-
-  a:hover {
-    text-decoration: underline;
+    display: inline-block;
+    margin: 0 1em;
   }
 
   /*Layout*/
@@ -206,6 +231,7 @@ footer {
   }
   .container {
     width: 80%;
+    padding: 2.5em 0;
   }
 
   .dashboard {
