@@ -62,7 +62,6 @@ button {
   border-radius: 30px;
   border: 3px solid var(--accent-dark);
   cursor: pointer;
-  transition: all 0.5s;
 }
 
 button:hover {
@@ -85,12 +84,12 @@ button:hover {
 
 .show-menu {
   display: block;
-  position: absolute;
+  position: fixed;
   padding: 2em;
   text-align: left;
   background-color: var(--accent); /* Added for clarity */
   left: 0; /* Aligns the menu to the left edge */
-  top: 15%; /* Positions the menu below the hamburger icon */
+  top: 120px; /* Positions the menu below the hamburger icon */
 }
 
 ul {
@@ -190,7 +189,9 @@ main {
 }
 
 footer {
-  /* height: 20vh; */
+  position: absolute;
+  bottom: 0;
+  height: 2.5rem;
   width: 100%;
   padding: 30px;
   color: var(--white);
